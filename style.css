@@ -1,5 +1,5 @@
 body{
-    background-color:#047857;
+    background-color: #1F2937;
     color: white;
     padding: auto;
     text-align: center;
@@ -14,10 +14,4 @@ button{
     padding: 0.5rem;
     margin-top: 2rem;
     border-radius: 1rem;
-
-}
-
-div {
-    padding:0.5rem;
-    color:black;
 }

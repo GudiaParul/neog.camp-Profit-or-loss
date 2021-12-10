@@ -1,34 +1,30 @@
-var initialPrice = document.querySelector("#initial-price")
-var quantity = document.querySelector("#quantity-of-stocks")
-var currentPrice = document.querySelector("#current-price")
-var btn = document.querySelector("#check-button")
-var output = document.querySelector("#output")
+const initialPrice = document.querySelector("#initial-price");
+const numberShare = document.querySelector("#number-of-shares");
+const currentPrice = document.querySelector("#current-price");
+const btnResult = document.querySelector("#btn-result");
+const result = document.querySelector("#result")
 
-function calculateProfitAndLoss() {
-    if (initial > current) {
-        var loss = initial - current;
-        var totalLoss = loss * qty;
-        var lossPercentage = (loss/initial)*100
-        output.innerText = "loss is " + totalLoss + " and percentage loss is " + lossPercentage;  
-    } else if (initial < current) {
-        var profit = current-initial;
-        var totalProfit = profit * qty;
-        var profitPercentage = (profit/initial)*100
-        output.innerText = "Profit is " + totalProfit + " and percentage profit is " + profitPercentage;
-    } else {
-       output.innerText = "no pain, no gain and no gain, no pain";
+function profitOrLoss(){
+    const initial = Number(initialPrice.value).toFixed(2);
+    const current = Number(currentPrice.value).toFixed(2);
+
+    if(initial === "" || current === "" || numberShare.value === ""){
+        alert("Please do not leave any field empty.");
     }
-}
+    else if(initial > current){
+        const loss = (initial-current)*numberShare.value;
+        const lossPercent = (initial - current) * 100/initial;
+        result.innerText = "Absolute loss is " + loss + " and percentage loss is " + lossPercent; 
+        console.log("ladcwm");
+    }
+    else if(initial < current){
+        const profit = (current-initial)*numberShare.value;
+        const profitPercent = (current-initial)*100/initial;
+        result.innerText = "Absolute profit is " + profit + " and percentage profit is " + profitPercent;
+    }
+    else{
+        result.innerText = "no pain, no gain and no gain, no pain";
+    }
+    }
 
-function profitOrLoss () {
-    var initial = Number(initialPrice.value);
-    var qty = Number(quantity.value);
-    var current = Number(currentPrice.value);
-
-    calculateProfitAndLoss();
-}
-
-
-
-
-btn.addEventListener("click", profitOrLoss);
+btnResult.addEventListener("click", profitOrLoss);

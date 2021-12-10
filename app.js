@@ -4,7 +4,21 @@ var currentPrice = document.querySelector("#current-price")
 var btn = document.querySelector("#check-button")
 var output = document.querySelector("#output")
 
-
+function calculateProfitAndLoss() {
+    if (initial > current) {
+        var loss = initial - current;
+        var totalLoss = loss * qty;
+        var lossPercentage = (loss/initial)*100
+        output.innerText = "loss is " + totalLoss + " and percentage loss is " + lossPercentage;  
+    } else if (initial < current) {
+        var profit = current-initial;
+        var totalProfit = profit * qty;
+        var profitPercentage = (profit/initial)*100
+        output.innerText = "Profit is " + totalProfit + " and percentage profit is " + profitPercentage;
+    } else {
+       output.innerText = "no pain, no gain and no gain, no pain";
+    }
+}
 
 function profitOrLoss () {
     var initial = Number(initialPrice.value);
@@ -15,20 +29,6 @@ function profitOrLoss () {
 }
 
 
-function calculateProfitAndLoss () {
-     if (initialPrice > currentPrice) {
-         var loss = (initialPrice - currentPrice)*quantity
-         var lossPercentage = (initialPrice/currentPrice)*100
-         output.innerText = "loss is " + loss + " and percentage loss is " + lossPercentage;  
-     } else if (initialPrice < currentPrice) {
-         var profit = (currentPrice-initialPrice)*quantity
-         var profitPercentage = (currentPrice/initialPrice)*100
-         output.innerText = "Profit is " + profit + " and percentage profit is " + profitPercentage;
-     } else {
-        output.innerText = "no pain, no gain and no gain, no pain";
-         
-     }
 
-}
 
 btn.addEventListener("click", profitOrLoss);
